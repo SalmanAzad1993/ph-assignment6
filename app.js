@@ -47,12 +47,12 @@ let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.add('added');
- 
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
   } else {
-    alert('Hey, Already added !')
+    element.classList.toggle('added');
+    sliders.pop(img);
   }
 }
 var timer
@@ -90,14 +90,7 @@ const createSlider = () => {
       sliderContainer.appendChild(item)
     })
   }
-  // sliders.forEach(slide => {
-  //   let item = document.createElement('div')
-  //   item.className = "slider-item";
-  //   item.innerHTML = `<img class="w-100"
-  //   src="${slide}"
-  //   alt="">`;
-  //   sliderContainer.appendChild(item)
-  // })
+
   changeSlide(0)
   timer = setInterval(function () {
     slideIndex++;
